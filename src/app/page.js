@@ -1,9 +1,10 @@
-import Dashboard from "@/components/Dashboard";
+import EnhancedDashboard from "@/components/Dashboard";
+
 
 export default function Home() {
   return (
     <main>
-      <Dashboard />
+      <EnhancedDashboard />
     </main>
   );
 }
