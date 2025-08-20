@@ -6,14 +6,14 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 // Enhanced Analytics Card Component
 const AnalyticsCard = ({ title, value, subtitle, gradient, icon }) => {
   return (
-    <div className={`${gradient} p-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300 border border-gray-700 backdrop-blur-sm`}>
+    <div className={`${gradient} p-6 rounded-2xl shadow-xl-colored hover-lift hover-glow backdrop-blur-sm border border-gray-600/30 analytics-card animate-fade-in`}>
       <div className="flex items-center justify-between">
-        <div>
-          <p className="text-gray-300 text-sm font-medium tracking-wide uppercase">{title}</p>
-          <p className="text-4xl font-bold text-white mt-2 font-mono">{value}</p>
-          {subtitle && <p className="text-gray-400 text-xs mt-1">{subtitle}</p>}
+        <div className="flex-1">
+          <p className="text-gray-200 text-sm font-semibold tracking-widest uppercase opacity-90">{title}</p>
+          <p className="text-5xl font-black text-white mt-3 font-mono text-gradient-blue drop-shadow-lg">{value}</p>
+          {subtitle && <p className="text-gray-300 text-sm mt-2 font-medium">{subtitle}</p>}
         </div>
-        {icon && <div className="text-4xl opacity-20">{icon}</div>}
+        {icon && <div className="text-5xl opacity-30 animate-float">{icon}</div>}
       </div>
     </div>
   );
@@ -22,8 +22,8 @@ const AnalyticsCard = ({ title, value, subtitle, gradient, icon }) => {
 // Horizontal Bar Chart Component
 const HorizontalBranchChart = ({ data }) => {
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl shadow-2xl border border-gray-700 backdrop-blur-sm">
-      <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+    <div className="bg-gradient-chart p-8 rounded-2xl shadow-xl-colored hover-lift border border-gray-600/40 analytics-card animate-slide-up">
+      <h2 className="text-3xl font-black mb-8 text-gradient bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 animate-glow">
         Branch-wise Candidate Distribution
       </h2>
       <ResponsiveContainer width="100%" height={500}>
@@ -66,8 +66,8 @@ const GenderPieChart = ({ data }) => {
   const COLORS = ['#3B82F6', '#EC4899'];
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl shadow-2xl border border-gray-700 backdrop-blur-sm">
-      <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-blue-400">
+    <div className="bg-gradient-chart p-8 rounded-2xl shadow-xl-colored hover-lift border border-gray-600/40 analytics-card animate-slide-up">
+      <h2 className="text-3xl font-black mb-8 text-gradient-pink animate-glow">
         Gender Distribution
       </h2>
       <ResponsiveContainer width="100%" height={300}>
@@ -98,8 +98,8 @@ const StatusChart = ({ data }) => {
   const COLORS = ['#10B981', '#EF4444', '#F59E0B', '#6B7280'];
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl shadow-2xl border border-gray-700 backdrop-blur-sm">
-      <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-yellow-400">
+    <div className="bg-gradient-chart p-8 rounded-2xl shadow-xl-colored hover-lift border border-gray-600/40 analytics-card animate-slide-up">
+      <h2 className="text-3xl font-black mb-8 text-gradient-green animate-glow">
         Overall Status Distribution
       </h2>
       <ResponsiveContainer width="100%" height={300}>
@@ -297,67 +297,72 @@ const EnhancedDashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 p-4 md:p-8">
       {/* Header */}
-      <div className="text-center mb-12">
-        <h1 className="text-5xl md:text-6xl font-black mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 font-mono">
+      <div className="text-center mb-16 animate-fade-in">
+        <h1 className="text-responsive-xl font-black mb-6 text-gradient animate-glow drop-shadow-2xl">
           INA NOC Jan 26 Batch
         </h1>
-        <p className="text-xl text-gray-400 font-light tracking-wide">Analytics Dashboard</p>
-        <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
+        <p className="text-responsive-lg text-gray-300 font-light tracking-widest uppercase opacity-90">Analytics Dashboard</p>
+        <div className="w-32 h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto mt-6 rounded-full animate-glow"></div>
+        <div className="flex justify-center mt-8 space-x-2">
+          <div className="w-3 h-3 bg-blue-500 rounded-full animate-bounce"></div>
+          <div className="w-3 h-3 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+          <div className="w-3 h-3 bg-pink-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+        </div>
       </div>
 
       {/* Analytics Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
         <AnalyticsCard 
           title="Total Candidates" 
           value={analytics.totalCandidates}
           subtitle="All branches combined"
-          gradient="bg-gradient-to-br from-blue-600 to-blue-800"
+          gradient="bg-gradient-blue"
           icon="👥"
         />
         <AnalyticsCard 
           title="Male Candidates" 
           value={analytics.maleCount}
           subtitle={`${((analytics.maleCount/analytics.totalCandidates)*100).toFixed(1)}% of total`}
-          gradient="bg-gradient-to-br from-indigo-600 to-purple-800"
+          gradient="bg-gradient-purple"
           icon="👨‍💼"
         />
         <AnalyticsCard 
           title="Female Candidates" 
           value={analytics.femaleCount}
           subtitle={`${analytics.femalePercentage}% of total`}
-          gradient="bg-gradient-to-br from-pink-600 to-rose-800"
+          gradient="bg-gradient-pink"
           icon="👩‍💼"
         />
         <AnalyticsCard 
           title="Fit Candidates" 
           value={analytics.fitCount}
           subtitle={`${analytics.fitPercentage}% success rate`}
-          gradient="bg-gradient-to-br from-green-600 to-emerald-800"
+          gradient="bg-gradient-green"
           icon="✅"
         />
       </div>
 
       {/* Additional Analytics Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         <AnalyticsCard 
           title="Temporarily Rejected" 
           value={analytics.trCount}
           subtitle={`${((analytics.trCount/analytics.totalCandidates)*100).toFixed(1)}% of total`}
-          gradient="bg-gradient-to-br from-red-600 to-red-800"
+          gradient="bg-gradient-to-br from-red-500 via-red-600 to-red-700"
           icon="❌"
         />
         <AnalyticsCard 
           title="Pending Review" 
           value={analytics.pendingCount}
           subtitle="Awaiting assessment"
-          gradient="bg-gradient-to-br from-yellow-600 to-orange-800"
+          gradient="bg-gradient-orange"
           icon="⏳"
         />
         <AnalyticsCard 
           title="Total Branches" 
           value={processedData.length}
           subtitle="Active departments"
-          gradient="bg-gradient-to-br from-teal-600 to-cyan-800"
+          gradient="bg-gradient-teal"
           icon="🏢"
         />
       </div>

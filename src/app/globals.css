@@ -112,6 +112,30 @@ body {
     border: 1px solid rgba(75, 85, 99, 0.3);
   }
 
+  .bg-gradient-blue {
+    background: var(--gradient-3);
+  }
+
+  .bg-gradient-purple {
+    background: var(--gradient-1);
+  }
+
+  .bg-gradient-pink {
+    background: var(--gradient-2);
+  }
+
+  .bg-gradient-green {
+    background: var(--gradient-4);
+  }
+
+  .bg-gradient-orange {
+    background: var(--gradient-5);
+  }
+
+  .bg-gradient-teal {
+    background: var(--gradient-6);
+  }
+
   .shadow-glow {
     box-shadow: var(--shadow-glow);
   }
