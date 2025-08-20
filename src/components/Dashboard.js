@@ -1,5 +1,5 @@
-"use client"
-// import { loadSheetData } from '@/lib/googleSheets';
+"use client";
+
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line } from 'recharts';
 
